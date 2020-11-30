@@ -4,7 +4,6 @@
     
     <title>Gestion des employés</title>
     <link rel="stylesheet" href="/static/bootstrap.min.css">
-<!--    On supprime le . pour pouvoir utiliser les css en l'obligant à revenir à la racine-->
     <link rel="stylesheet" href="/static/font-awesome.css">
 </head>
 <body>
@@ -33,9 +32,7 @@
 
 <div class="container">
     <h2>Détail du [[${employe.className}]] [[${employe.matricule}]]</h2>
-
-    <!--  L'ensemble commentaire permet d'utiliser la variable sans avoir le soulignement et permettre l'autocomplétion   -->
-    <!--/*@thymesVar id="employe" type="com.ipiecoles.java.java320.model.Employe"*/-->
+    
     <form id="saveForm" action="http://localhost:8080/employes/commercial/6" method="post" class="row">
         <div class="col-lg-6">
             <div class="form-group">
@@ -74,23 +71,6 @@
             </div>
         </div>
 
-<!--        bloc non nécessaire dans le cas d'un employé      -->
-<!--        <div class="col-lg-6">-->
-<!--            <label class="form-control-label" for="performance">Performance</label>-->
-<!--            <input type="number" value="5" class="form-control" name="performance" id="performance">-->
-
-<!--            <label class="form-control-label" for="caAnnuel">CA Annuel</label>-->
-<!--            <div class="input-group">-->
-<!--                <input type="number" value="0.0" class="form-control" name="caAnnuel" id="caAnnuel">-->
-<!--                <div class="input-group-append">-->
-<!--                    <span class="input-group-text">€</span>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-
-        
-
-        
     </form>
     
     
