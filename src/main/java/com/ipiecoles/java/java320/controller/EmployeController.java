@@ -27,7 +27,12 @@ public class EmployeController {
             final ModelMap model,
             @PathVariable Long id
     ){
-        
+        Optional<Employe> employeOptional = employeRepository.findById(id);
+
+        //pour plus tard gestion erreur 404
+
+        model.put("employe", employeOptional.get());
+        return "detail";
     }
 
 }
