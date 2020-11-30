@@ -75,8 +75,11 @@ public class EmployeController {
 
         model.put("employes", pageEmployes);
 
+        //Affichage du numéro des éléments présents dans la page
         model.put("start", page * size +1);
         model.put("end", (page+1)*size);
+
+        //Les boutons et l'affichage de la page en cours
         model.put("pageNumber", page);//C'est pour afficher la page en cours
         model.put("previousPage", page-1);
         model.put("nextPage", page+1);
