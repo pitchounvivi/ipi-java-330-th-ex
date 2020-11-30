@@ -91,17 +91,15 @@
                 <div class="col-lg-6">
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">
-                            <li class="page-item disabled">
-                                <a th:href="@{/employes(page=0,size=10,sortDirection='ASC',sortProperty='matricule')}" class="page-link">«</a>
+                            <li class="page-item">
+                                <a th:href="@{/employes(page=${previousPage},size=${param.size},sortDirection=${param.sortDirection},sortProperty=${param.sortProperty})}" class="page-link">«</a>
                             </li>
                             
                             <li class="page-item">
-                                <a href="http://localhost:8080/employes?page=0&amp;size=10&amp;sortDirection=ASC&amp;sortProperty=matricule#" class="page-link">Page <span th:text="${pageNumber}">1</span></a>
+                                <a class="page-link">Page <span th:text="${pageNumber}">1</span></a>
                             </li>
                             <li class="page-item">
-                                <a class="page-link" href="http://localhost:8080/employes?page=1&amp;size=10&amp;sortDirection=ASC&amp;sortProperty=matricule">
-                                    »
-                                </a>
+                                <a th:href="@{/employes(page=${nextPage},size=${param.size},sortDirection=${param.sortDirection},sortProperty=${param.sortProperty})}" class="page-link">»</a>
                             </li>
                             
                         </ul>
