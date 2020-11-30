@@ -8,5 +8,7 @@
 <body>
     <h1>Hello <span th:text="${nom}"></span> !!!</h1>
     <p th:utext="${msg}"></p>
+    <p data-th-text="${otherText}"></p>
+    <!--l'attribut data-th-text permet de passer les validateur de page html-->
 </body>
 </html>

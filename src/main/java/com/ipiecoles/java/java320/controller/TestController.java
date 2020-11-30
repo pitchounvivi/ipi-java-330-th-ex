@@ -12,6 +12,7 @@ public class TestController {
     public String test(final ModelMap model) {
         model.put("nom", "IPI");
         model.put("msg", "How are <strong>you</strong> ?");
+        model.put("otherText", "Have a nice day !");
         return "test";
     }
 
