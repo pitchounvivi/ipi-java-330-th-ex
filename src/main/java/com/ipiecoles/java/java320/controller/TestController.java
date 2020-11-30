@@ -11,6 +11,7 @@ public class TestController {
     @GetMapping(value = "/test")
     public String test(final ModelMap model) {
         model.put("nom", "IPI");
+        model.put("msg", "How are <strong>you</strong> ?");
         return "test";
     }
 
