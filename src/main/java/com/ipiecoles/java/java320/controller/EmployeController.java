@@ -69,6 +69,10 @@ public class EmployeController {
     ){
         Page<Employe> pageEmployes = employeRepository.findAll(PageRequest.of(page, size,
                 Sort.Direction.fromString(sortDirection), sortProperty));
+
+//        pageEmployes.getTotalElements();
+//        pageEmployes.getTotalPages();
+
         model.put("employes", pageEmployes);
         return "listeEmployes";
     }
