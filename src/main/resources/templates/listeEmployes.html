@@ -77,7 +77,7 @@
                         <th scope="row" th:text="${employe.matricule}">C00002</th>
                         <td th:text="${employe.nom}">Poirier</td>
                         <td th:text="${employe.prenom}">Marie</td>
-                        <td><a href="@{/employes/{employe.id}">Détail</a></td>
+                        <td><a th:href="'/employes/' + ${employe.id}">Détail</a></td>
                     </tr>
 
                 </tbody>
