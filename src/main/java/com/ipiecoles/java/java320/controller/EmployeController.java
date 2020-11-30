@@ -74,6 +74,11 @@ public class EmployeController {
 //        pageEmployes.getTotalPages();
 
         model.put("employes", pageEmployes);
+
+        model.put("start", page * size +1);
+        model.put("end", (page+1)*size);
+        model.put("pageNumber", page+1);
+
         return "listeEmployes";
     }
 

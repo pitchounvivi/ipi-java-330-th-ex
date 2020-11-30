@@ -85,18 +85,18 @@
             <div class="row">
                 <div class="col-lg-6">
                     <p>
-                        Affichage des employés <span>1</span> à <span>10</span> sur un total de <span th:text="${employes.totalElements}">!2504!</span>
+                        Affichage des employés <span th:text="${start}">1</span> à <span th:text="${end}">10</span> sur un total de <span th:text="${employes.totalElements}">!2504!</span>
                     </p>
                 </div>
                 <div class="col-lg-6">
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">
                             <li class="page-item disabled">
-                                <a href="http://localhost:8080/employes?page=0&amp;size=10&amp;sortDirection=ASC&amp;sortProperty=matricule#" class="page-link">«</a>
+                                <a th:href="@{/employes(page=0,size=10,sortDirection='ASC',sortProperty='matricule')}" class="page-link">«</a>
                             </li>
                             
                             <li class="page-item">
-                                <a href="http://localhost:8080/employes?page=0&amp;size=10&amp;sortDirection=ASC&amp;sortProperty=matricule#" class="page-link">Page <span>1</span></a>
+                                <a href="http://localhost:8080/employes?page=0&amp;size=10&amp;sortDirection=ASC&amp;sortProperty=matricule#" class="page-link">Page <span th:text="${pageNumber}">1</span></a>
                             </li>
                             <li class="page-item">
                                 <a class="page-link" href="http://localhost:8080/employes?page=1&amp;size=10&amp;sortDirection=ASC&amp;sortProperty=matricule">
