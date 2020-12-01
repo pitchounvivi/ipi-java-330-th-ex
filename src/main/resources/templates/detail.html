@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
-    <title>Gestion des employés</title>
-    <link rel="stylesheet" href="/static/bootstrap.min.css">
-<!--    On supprime le . pour pouvoir utiliser les css en l'obligant à revenir à la racine-->
-    <link rel="stylesheet" href="/static/font-awesome.css">
+<head th:replace="fragments/header :: head">
+
+
+<!--    désormais tout ceci est dans le fragment hearder :: head-->
+<!--    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">-->
+<!--    -->
+
+<!--    <link rel="stylesheet" href="/static/bootstrap.min.css">-->
+<!--&lt;!&ndash;    On supprime le . pour pouvoir utiliser les css en l'obligant à revenir à la racine&ndash;&gt;-->
+<!--    <link rel="stylesheet" href="/static/font-awesome.css">-->
+
+
+        <title>Gestion des employés</title>
 </head>
 <body>
 
