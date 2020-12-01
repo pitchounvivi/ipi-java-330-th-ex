@@ -102,19 +102,16 @@
                         <ul class="pagination">
 
 
-                            <li class="page-item" th:if="${pageNumber} != 0">
+                            <li class="page-item" th:if="${employes.hasPrevious()}">
                                 <a th:href="@{/employes(page=${previousPage},size=${param.size},sortDirection=${param.sortDirection},sortProperty=${param.sortProperty})}" class="page-link">«</a>
                             </li>
-<!--                            <li class="page-item" th:unless="${pageNumber}">-->
-<!--                                <a href="#" class="page-link disabled">«</a>-->
-<!--                            </li>-->
 
                             <li class="page-item">
                                 <a class="page-link">Page <span th:text="${pageNumber}">1</span></a>
                             </li>
 
 
-                            <li class="page-item" th:if="${pageNumber} != ${employes.totalPages}">
+                            <li class="page-item" th:if="${employes.hasNext()}">
                                 <a th:href="@{/employes(page=${nextPage},size=${param.size},sortDirection=${param.sortDirection},sortProperty=${param.sortProperty})}" class="page-link">»</a>
                             </li>
                             
