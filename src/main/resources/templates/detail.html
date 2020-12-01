@@ -79,10 +79,9 @@
         </div>
 
         <div class="col-lg-6">
+            <!--        bloc non nécessaire dans le cas d'un non commercial      -->
             <div th:if="${#strings.equals(employe.className, 'Commercial')}">
                 <div th:if="${employe instanceof T(com.ipiecoles.java.java320.model.Commercial)}">
-
-        <!--        bloc non nécessaire dans le cas d'un non commercial      -->
 
                         <label class="form-control-label" for="performance">Performance</label>
                         <input type="number" value="5" th:value="${employe.performance}" class="form-control" name="performance" id="performance">
@@ -94,9 +93,30 @@
                                 <span class="input-group-text">€</span>
                             </div>
                         </div>
-
                 </div>
             </div>
+
+
+            <!--        bloc pour un technicien      -->
+<!--                <div th:if="${employe instanceof T(com.ipiecoles.java.java320.model.Technicien)}">-->
+
+
+
+
+            <!--        bloc pour un manager      -->
+                <div th:if="${employe instanceof T(com.ipiecoles.java.java320.model.Manager)}" class="col-lg-6">
+                    <label class="form-control-label">Equipe</label>
+                        <ul class="list-group">
+                            <li class="list-group-item" th:each="tech : ${employe.equipe}">
+                                <a th:href="'/employes/' + ${tech.id}">
+                                    <span th:text="${tech.prenom}"></span> <span th:text="${tech.nom}"></span>
+                                    <span class="badge badge-primary float-right" th:text="${tech.matricule}"></span>
+                                </a>
+                            </li>
+                        </ul>
+                </div>
+
+
         </div>
 
         
