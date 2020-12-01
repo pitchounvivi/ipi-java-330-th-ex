@@ -43,7 +43,7 @@
                 <input type="text" value="Poirier" th:value="${employe.nom}" class="form-control" name="nom" id="nom">
 
                 <label class="form-control-label" for="prenom">Prénom</label>
-                <input type="text" value="Marie" th:value="${employe.prenom}" class="form-control" name="prenom" id="prenom">
+                <input type="text" value="Marie" th:value="${#strings.toLowerCase(employe.prenom)}" class="form-control" name="prenom" id="prenom">
 
                 <label class="form-control-label" for="matricule">Matricule</label>
                 <input type="text" value="C00002" th:value="${employe.matricule}" class="form-control" name="matricule" id="matricule">
@@ -94,7 +94,7 @@
                                 <span class="input-group-text">€</span>
                             </div>
                         </div>
-                    
+
                 </div>
             </div>
         </div>
