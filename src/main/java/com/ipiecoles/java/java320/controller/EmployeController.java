@@ -1,12 +1,14 @@
 package com.ipiecoles.java.java320.controller;
 
+import com.ipiecoles.java.java320.model.Commercial;
+import com.ipiecoles.java.java320.model.Technicien;
+import com.ipiecoles.java.java320.model.Manager;
 import com.ipiecoles.java.java320.model.Employe;
 import com.ipiecoles.java.java320.repository.EmployeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -86,6 +88,40 @@ public class EmployeController {
 
         return "listeEmployes";
     }
+
+
+    ////////////////////////////////////Zone de gestion de formulaire
+    //Accéder au formulaire de création d'un employe
+    @RequestMapping(
+            value = "/new/{typeEmploye}",
+            method = RequestMethod.GET
+    )
+    public String newEmploye(@PathVariable String typeEmploye, final ModelMap model){
+       switch (typeEmploye.toLowerCase()){
+           case "technicien": model.put("employe", new Technicien()); break;
+           case "commercial": model.put("employe", new Commercial()); break;
+           case "manager": model.put("employe", new Manager()); break;
+       }
+        return "detail";
+    }
+    //==> dans le template, il affiche le salaire de base par défaut => c'est normal
+
+
+
+    //Créer un Commercial
+    @RequestMapping(
+            value = "/commercial/{id}",
+            method = RequestMethod.POST,
+            consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE
+    )
+    public String registerCommercial(/*@RequestBody*/ Employe employe, final ModelMap model){
+        model.put("employe", employeRepository.save(employe));
+        return "detail";
+    }
+
+
+
+
 
 
 }
