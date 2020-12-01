@@ -155,10 +155,12 @@
     <div class="row mt-2">
         <div class="col-lg-6">
             <input form="saveForm" class="btn btn-primary" type="submit" value="Enregistrer">
-            <a href="http://localhost:8080/employes/6/delete" class="btn btn-danger">Supprimer</a>
+<!--            <a th:href="'/employes/' + ${employe.id} + '/delete'" class="btn btn-danger">Supprimer</a>-->
+            <a th:href="'/employes/'+${employe.id}+'/delete'" class="btn btn-danger">Supprimer</a>
         </div>
     </div>
 </div>
 
 
-</body></html>
+</body>
+</html>

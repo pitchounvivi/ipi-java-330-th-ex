@@ -40,7 +40,6 @@ public class EmployeController {
             throw new EntityNotFoundException("L'employé d'identifiant " + id + " n'a pas été trouvé !");
         }
 
-
         model.put("employe", employeOptional.get());
         return "detail";
     }
@@ -73,7 +72,7 @@ public class EmployeController {
             final ModelMap model,
             @RequestParam(defaultValue = "0") Integer page,
             @RequestParam(defaultValue = "10") Integer size,
-            @RequestParam(defaultValue = "name") String sortProperty,
+            @RequestParam(defaultValue = "matricule") String sortProperty,
             @RequestParam(value = "sortDirection", defaultValue = "ASC") String sortDirection
     ){
         Page<Employe> pageEmployes = employeRepository.findAll(PageRequest.of(page, size,
@@ -98,7 +97,7 @@ public class EmployeController {
 
 
     ////////////////////////////////////Zone de gestion de formulaire
-    //Accéder au formulaire de création d'un employe
+    //Accéder au formulaire de création d'un employé
     @RequestMapping(
             value = "/new/{typeEmploye}",
             method = RequestMethod.GET
@@ -143,11 +142,27 @@ public class EmployeController {
     }
 
 
-//    @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
-//    public RedirectView deleteEmploye(){
+
+    //Supression d'un employé
+//    @RequestMapping(value = "/{id}/delete",
+//            method = RequestMethod.GET)
+//    public RedirectView deleteEmploye(
+//            @PathVariable Long id
+//    ){
 //        //Faire la suppression
+//        employeRepository.deleteById(id);
+//
+//        //Quand c'est fait on redirige
 //        return new RedirectView("/employes");
 //    }
 
+    @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
+    public RedirectView deleteEmploye(@PathVariable Long id){
+        if(!employeRepository.existsById(id)){
+            throw new EntityNotFoundException("L'employé d'identifiant " + id + " n'a pas été trouvé !");
+        }
+        employeRepository.deleteById(id);
+        return new RedirectView("/employes?page=0&size=10&sortProperty=matricule&sortDirection=ASC");
+    }
 
 }
