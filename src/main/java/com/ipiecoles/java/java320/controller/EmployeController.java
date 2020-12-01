@@ -144,18 +144,6 @@ public class EmployeController {
 
 
     //Supression d'un employé
-//    @RequestMapping(value = "/{id}/delete",
-//            method = RequestMethod.GET)
-//    public RedirectView deleteEmploye(
-//            @PathVariable Long id
-//    ){
-//        //Faire la suppression
-//        employeRepository.deleteById(id);
-//
-//        //Quand c'est fait on redirige
-//        return new RedirectView("/employes");
-//    }
-
     @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
     public RedirectView deleteEmploye(@PathVariable Long id){
         if(!employeRepository.existsById(id)){
