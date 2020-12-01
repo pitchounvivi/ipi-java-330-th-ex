@@ -15,6 +15,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.Optional;
 
 @Controller
@@ -35,10 +36,15 @@ public class EmployeController {
         Optional<Employe> employeOptional = employeRepository.findById(id);
 
         //pour plus tard gestion erreur 404
+        if(employeOptional.isEmpty()){
+            throw new EntityNotFoundException("L'employé d'identifiant " + id + " n'a pas été trouvé !");
+        }
+
 
         model.put("employe", employeOptional.get());
         return "detail";
     }
+
 
 
     //Recherche d'un employé par son matricule
