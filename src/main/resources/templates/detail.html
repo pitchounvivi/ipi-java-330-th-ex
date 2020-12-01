@@ -45,7 +45,7 @@
 
     <!--  L'ensemble commentaire permet d'utiliser la variable sans avoir le soulignement et permettre l'autocomplétion   -->
     <!--/*@thymesVar id="employe" type="com.ipiecoles.java.java320.model.Employe"*/-->
-    <form id="saveForm" th:action="${employe.id} ? '/employes/' + ${employe.className.toLowerCase()} + '/' + ${employe.id} : '/employes'"> method="post" class="row">
+    <form id="saveForm" th:action="${employe.id} ? '/employes/' + ${employe.className.toLowerCase()} + '/' + ${employe.id} : '/employes'" method="post" class="row">
         <div class="col-lg-6">
             <div class="form-group">
                 <label class="form-control-label" for="nom">Nom</label>
@@ -70,18 +70,18 @@
 
                 <div>
 
-<!--                    modification dans le cas d'un nouvel employe-->
-                    <div th:if="employe.id">
-                    <label class="form-control-label" for="nom">Prime Annuelle</label>
-                    <div class="input-group">
-                        <span th:text="${#numbers.formatCurrency(employe.primeAnnuelle)}"></span>
-<!--                        on a un petit souci d'affichage du symbole euros, car la bdd n'est pas en utf-8 (utf8_general_ci) mais en latin-->
-<!--                        le bloc span du dessus remplace le bloc commenté qui suit-->
-<!--                        <input type="text" value="500.0" th:value="${employe.primeAnnuelle}" class="form-control" name="primeAnnuelle" id="primeAnnuelle">-->
-<!--                        <div class="input-group-append">-->
-<!--                            <span class="input-group-text">€</span>-->
-<!--                        </div>-->
-                    </div>
+<!--                    modification dans le cas d'un nouvel employe on  n'affiche pas la prime-->
+                    <div th:if="${employe.id}">
+                        <label class="form-control-label" for="nom">Prime Annuelle</label>
+                        <div class="input-group">
+                            <span th:text="${#numbers.formatCurrency(employe.primeAnnuelle)}"></span>
+    <!--                        on a un petit souci d'affichage du symbole euros, car la bdd n'est pas en utf-8 (utf8_general_ci) mais en latin-->
+    <!--                        le bloc span du dessus remplace le bloc commenté qui suit-->
+    <!--                        <input type="text" value="500.0" th:value="${employe.primeAnnuelle}" class="form-control" name="primeAnnuelle" id="primeAnnuelle">-->
+    <!--                        <div class="input-group-append">-->
+    <!--                            <span class="input-group-text">€</span>-->
+    <!--                        </div>-->
+                        </div>
                     </div>
                 </div>
 
@@ -117,7 +117,7 @@
                     <label class="form-control-label" for="grade">Grade</label>
                     <input type="number" value="0.0" th:value="${employe.grade}" class="form-control" name="grade" id="grade">
 
-                    <label class="form-control-label" for="caAnnuel">Manager</label>
+                    <label class="form-control-label" for="caAnnuel" >Manager</label>
                     <div class="list-group">
                         <li class="List-group-item" th:if="${employe.manager}">
                         <a th:href="'/employes/'+ ${employe.manager.id}">
