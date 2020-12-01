@@ -63,7 +63,7 @@
                     <label class="form-control-label" for="nom">Prime Annuelle</label>
                     <div class="input-group">
                         <span th:text="${#numbers.formatCurrency(employe.primeAnnuelle)}"></span>
-<!--                        on a un petit souci d'affichage du symbole euros, car la bdd n'est pas en utf-8 mais en latin-->
+<!--                        on a un petit souci d'affichage du symbole euros, car la bdd n'est pas en utf-8 (utf8_general_ci) mais en latin-->
 <!--                        le bloc span du dessus remplace le bloc commenté qui suit-->
 <!--                        <input type="text" value="500.0" th:value="${employe.primeAnnuelle}" class="form-control" name="primeAnnuelle" id="primeAnnuelle">-->
 <!--                        <div class="input-group-append">-->
@@ -73,7 +73,8 @@
                 </div>
 
                 <label class="form-control-label" for="nom">Date d'embauche</label>
-                <input type="text" value="10/01/2011" th:value="${employe.dateEmbauche}" class="form-control" name="dateEmbauche" id="dateEmbauche">
+                <input type="text" value="10/01/2011" th:value="${#temporals.format(employe.dateEmbauche, 'dd/MM/YYYY')}" class="form-control" name="dateEmbauche" id="dateEmbauche">
+<!--                <input type="text" value="10/01/2011" th:value="${employe.dateEmbauche}" class="form-control" name="dateEmbauche" id="dateEmbauche">-->
             </div>
         </div>
 
