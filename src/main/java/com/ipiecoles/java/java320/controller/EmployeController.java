@@ -13,6 +13,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.Optional;
 
@@ -108,20 +109,89 @@ public class EmployeController {
 
 
 
-    //Créer un Commercial
-    @RequestMapping(
-            value = "",
-            method = RequestMethod.POST,
-            consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE
-    )
-    public String registerCommercial(/*@RequestBody*/ Employe employe, final ModelMap model){
-        model.put("employe", employeRepository.save(employe));
-        return "detail";
+//    //Créer un employé
+//    @RequestMapping(
+//            value = "",
+//            method = RequestMethod.POST,
+//            consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE
+//    )
+//    public String createEmploye(/*@RequestBody*/ Employe employe, final ModelMap model){
+//        model.put("employe", employeRepository.save(employe));
+//        return "detail";
+//    }
+
+//    //Créer un commercial
+//    @RequestMapping(
+//            value = "/commercial",
+//            method = RequestMethod.POST,
+//            consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE
+//    )
+//    public String createCommercial(/*@RequestBody*/ Commercial employe, final ModelMap model){
+//        model.put("employe", employeRepository.save(employe));
+//        return "detail";
+//    }
+
+//    //Créer un technicien
+//    @RequestMapping(
+//            value = "/technicien",
+//            method = RequestMethod.POST,
+//            consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE
+//    )
+//    public String createTechnicien(/*@RequestBody*/ Technicien employe, final ModelMap model){
+//        model.put("employe", employeRepository.save(employe));
+//        return "detail";
+//    }
+//    //{id}
+//    //Créer un manager
+//    @RequestMapping(
+//            value = "/manager",
+//            method = RequestMethod.POST,
+//            consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE
+//    )
+//    public String createManager(/*@RequestBody*/ Manager employe, final ModelMap model){
+//        model.put("employe", employeRepository.save(employe));
+//        return "detail";
+//    }
+//
+//    //Redirection après l'enregistrement pour avoir une URL correcte et pas une demande de renvoi de formulaire
+//    private RedirectView saveEmploye(ModelMap model, Employe employe){
+//    employe = employeRepository.save(employe);
+//        return new RedirectView("/employes/" + employe.getId());
+//    }
+
+    //Création et enregistrement d'un commercial
+    @RequestMapping(method = RequestMethod.POST, value = "/commercial",
+            consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public RedirectView createOrSaveCommercial(Commercial employe){
+        return saveEmploye(employe);
+    }
+
+    //Création et enregistrement d'un technicien
+    @RequestMapping(method = RequestMethod.POST, value = "/technicien",
+            consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public RedirectView createOrSaveTechnicien(Technicien employe){
+        return saveEmploye(employe);
+    }
+
+    //Création et enregistrement d'un manager
+    @RequestMapping(method = RequestMethod.POST, value = "/manager",
+            consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public RedirectView createOrSaveManager(Manager employe){
+        return saveEmploye(employe);
+    }
+
+    //Redirection après l'enregistrement pour avoir une URL correcte et pas une demande de renvoi de formulaire
+    private RedirectView saveEmploye(Employe employe){
+        employe = employeRepository.save(employe);
+        return new RedirectView("/employes/" + employe.getId());
     }
 
 
-
-
+//    @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
+//    public RedirectView deleteEmploye(){
+//        //Faire la suppression
+//        return new RedirectView("/employes");
+//    }
 
 
 }

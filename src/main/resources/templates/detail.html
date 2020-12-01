@@ -45,7 +45,8 @@
 
     <!--  L'ensemble commentaire permet d'utiliser la variable sans avoir le soulignement et permettre l'autocomplétion   -->
     <!--/*@thymesVar id="employe" type="com.ipiecoles.java.java320.model.Employe"*/-->
-    <form id="saveForm" th:action="${employe.id} ? '/employes/' + ${employe.className.toLowerCase()} + '/' + ${employe.id} : '/employes'" method="post" class="row">
+    <form id="saveForm" th:action="'/employes/' + ${employe.className.toLowerCase()}" method="post" class="row">
+        <input type="hidden" th:value="${employe.id}" name="id">
         <div class="col-lg-6">
             <div class="form-group">
                 <label class="form-control-label" for="nom">Nom</label>
