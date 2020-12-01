@@ -62,10 +62,13 @@
                 <div>
                     <label class="form-control-label" for="nom">Prime Annuelle</label>
                     <div class="input-group">
-                        <input type="text" value="500.0" th:value="${employe.primeAnnuelle}" class="form-control" name="primeAnnuelle" id="primeAnnuelle">
-                        <div class="input-group-append">
-                            <span class="input-group-text">€</span>
-                        </div>
+                        <span th:text="${#numbers.formatCurrency(employe.primeAnnuelle)}"></span>
+<!--                        on a un petit souci d'affichage du symbole euros, car la bdd n'est pas en utf-8 mais en latin-->
+<!--                        le bloc span du dessus remplace le bloc commenté qui suit-->
+<!--                        <input type="text" value="500.0" th:value="${employe.primeAnnuelle}" class="form-control" name="primeAnnuelle" id="primeAnnuelle">-->
+<!--                        <div class="input-group-append">-->
+<!--                            <span class="input-group-text">€</span>-->
+<!--                        </div>-->
                     </div>
                 </div>
 
