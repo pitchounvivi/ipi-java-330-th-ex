@@ -110,7 +110,7 @@ public class EmployeController {
 
     //Créer un Commercial
     @RequestMapping(
-            value = "/commercial/{id}",
+            value = "",
             method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE
     )
