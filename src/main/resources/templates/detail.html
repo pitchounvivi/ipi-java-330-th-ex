@@ -98,9 +98,23 @@
 
 
             <!--        bloc pour un technicien      -->
-<!--                <div th:if="${employe instanceof T(com.ipiecoles.java.java320.model.Technicien)}">-->
+                <div th:if="${employe instanceof T(com.ipiecoles.java.java320.model.Technicien)}">
+                    <label class="form-control-label" for="grade">Grade</label>
+                    <input type="number" value="0.0" th:value="${employe.grade}" class="form-control" name="grade" id="grade">
 
 
+
+                    <label class="form-control-label" for="caAnnuel">Manager</label>
+                    <div class="input-group">
+                        <li class="List-group-item" th:if="${employe.manager}">
+                        <a th:href="'/employes/'+ ${employe.manager.id}">
+                            <span th:text="${employe.manager.prenom}"></span><span th:text="${employe.manager.nom}"></span>
+                            <span class="badge badge-primary float-right" th:text="${employe.manager.matricule}"></span>
+                        </a>
+                        </li>
+                    </div>
+
+                </div>
 
 
             <!--        bloc pour un manager      -->
